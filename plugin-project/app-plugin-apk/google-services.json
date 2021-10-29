@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "264465316274",
+    "project_id": "online-video-9339e",
+    "storage_bucket": "online-video-9339e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264465316274:android:9eb1f82b8ce0b6f7bf4cab",
+        "android_client_info": {
+          "package_name": "com.smx.tankyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264465316274-9mq5k11fovu0oft8pvbk56c8arps9j94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUtn792vQV4Ga8WW1qHrwAp3_NuQFMqO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264465316274-9mq5k11fovu0oft8pvbk56c8arps9j94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

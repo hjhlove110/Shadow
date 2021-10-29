@@ -1,0 +1,27 @@
+rootProject.name = "ShadowProject"
+
+//壳子依赖库，主要提供给插件使用
+def shellLibs = new File(rootDir, "/LibManager").listFiles()
+shellLibs.each {
+    include(":" + it.name)
+    project(":" + it.name).projectDir = it
+}
+
+//host项目配置
+def hostFiles = new File(rootDir, "host-project").listFiles()
+hostFiles.each {
+    include(":" + it.name)
+    project(":" + it.name).projectDir = it
+}
+//manager项目配置
+def managerFiles = new File(rootDir, "manager-project").listFiles()
+managerFiles.each {
+    include(":" + it.name)
+    project(":" + it.name).projectDir = it
+}
+//plugin项目配置
+def pluginFiles = new File(rootDir, "plugin-project").listFiles()
+pluginFiles.each {
+    include(":" + it.name)
+    project(":" + it.name).projectDir = it
+}

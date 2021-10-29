@@ -1,0 +1,84 @@
+//先照抄一下plugin-normal-apk
+apply from: '../app-normal-apk/build.gradle'
+
+android {
+    defaultConfig {
+        //再把applicationId改成宿主的
+        applicationId rootProject.ext.android["applicationId"]
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            variant.getPackageApplication().outputDirectory = new File(rootDir.absolutePath + "/app-plugin-apk/build/outputs/apk/debug/")
+            outputFileName = "plugin-shadow-apk-debug.apk"
+        }
+    }
+}
+
+dependencies {
+    //Shadow Transform后业务代码会有一部分实际引用runtime中的类
+    //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
+    compileOnly "com.tencent.shadow.core:runtime:$shadow_version"
+}
+
+apply plugin: 'com.tencent.shadow.plugin'
+
+shadow {
+    packagePlugin {
+        pluginTypes {
+            debug {
+                loaderApkConfig = new Tuple2('sample-loader-debug.apk', ':sample-loader:assembleDebug')
+                runtimeApkConfig = new Tuple2('sample-runtime-debug.apk', ':sample-runtime:assembleDebug')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'sample-plugin'
+//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
+                        partKey = 'sample-plugin'
+                        buildTask = 'assembleDebug'
+                        apkName = 'plugin-shadow-apk-debug.apk'
+                        apkPath = 'app-plugin-apk/build/outputs/apk/debug/plugin-shadow-apk-debug.apk'
+                        hostWhiteList = ["com.google.android.gms.ads", "com.google.android.gms.ads.*",
+                                         "com.google.android.gms.ads.**", "com.jess.arms", "com.jess.arms.*",
+                                         "com.jess.arms.**", "com.dresses.library", "com.dresses.library.*",
+                                         "com.dresses.library.**", "com.dress.fun1.QFileProvider", "com.downloader"
+                                         , "com.downloader.*", "com.downloader.**", "org.cybergarage", "org.cybergarage.*",
+                                         "org.cybergarage.**", "com.lazygeniouz.aoa", "com.lazygeniouz.aoa.*",
+                                         "com.lazygeniouz.aoa.**", "com.semax.module", "com.semax.module.*",
+                                         "com.semax.module.**", "android.view", "android.view.*", "android.view.**"]
+                        // 配置允许插件访问宿主的类
+                    }
+                }
+            }
+
+            release {
+                loaderApkConfig = new Tuple2('sample-loader-release.apk', ':sample-loader:assembleRelease')
+                runtimeApkConfig = new Tuple2('sample-runtime-release.apk', ':sample-runtime:assembleRelease')
+                pluginApks {
+                    pluginApk1 {
+                        businessName = 'demo'
+                        partKey = 'sample-plugin'
+                        buildTask = 'assembleRelease'
+                        apkName = 'plugin-shadow-apk-release.apk'
+                        apkPath = 'app-plugin-apk/build/outputs/apk/release/plugin-shadow-apk-release.apk'
+                        hostWhiteList = ["com.google.android.gms.ads", "com.google.android.gms.ads.*",
+                                         "com.google.android.gms.ads.**", "com.jess.arms", "com.jess.arms.*",
+                                         "com.jess.arms.**", "com.dresses.library", "com.dresses.library.*",
+                                         "com.dresses.library.**", "com.dress.fun1.QFileProvider", "com.downloader"
+                                         , "com.downloader.*", "com.downloader.**", "org.cybergarage", "org.cybergarage.*",
+                                         "org.cybergarage.**", "com.lazygeniouz.aoa", "com.lazygeniouz.aoa.*",
+                                         "com.lazygeniouz.aoa.**", "com.semax.module", "com.semax.module.*",
+                                         "com.semax.module.**", "android.view", "android.view.*", "android.view.**"]
+                        // 配置允许插件访问宿主的类
+                    }
+                }
+            }
+        }
+
+        loaderApkProjectPath = 'sample-loader'
+
+        runtimeApkProjectPath = 'sample-runtime'
+
+        version = 4
+        compactVersion = [1, 2, 3]
+        uuidNickName = "1.1.5"
+    }
+}

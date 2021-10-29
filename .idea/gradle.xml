@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/LibManager/admob" />
+            <option value="$PROJECT_DIR$/LibManager/alibrary" />
+            <option value="$PROJECT_DIR$/LibManager/arms" />
+            <option value="$PROJECT_DIR$/LibManager/downloader" />
+            <option value="$PROJECT_DIR$/host-project/introduce-shadow-lib" />
+            <option value="$PROJECT_DIR$/host-project/sample-host" />
+            <option value="$PROJECT_DIR$/manager-project/sample-manager" />
+            <option value="$PROJECT_DIR$/plugin-project/app-normal-apk" />
+            <option value="$PROJECT_DIR$/plugin-project/app-plugin-apk" />
+            <option value="$PROJECT_DIR$/plugin-project/sample-loader" />
+            <option value="$PROJECT_DIR$/plugin-project/sample-runtime" />
+            <option value="$PROJECT_DIR$/plugin-project/ttlib" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

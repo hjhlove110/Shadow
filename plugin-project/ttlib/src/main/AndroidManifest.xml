@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.semax.module.history">
+
+    <application>
+        <activity
+            android:name=".mvp.ui.activity.KpActivity"
+            android:theme="@style/Theme.AppCompat"
+            android:label="@string/title_activity_kp"></activity>
+    </application>
+
+</manifest>
